@@ -2,7 +2,8 @@
 import cv2
 import cv2.cv as cv
 import numpy as np
-import Queue
+import time
+
 
 
 class Detection:
@@ -21,7 +22,7 @@ class Detection:
 class CircleDetection(Detection):
 	def __init__(self, draw=False):
 		self.draw = draw
-		self.cap = cv2.VideoCapture(1)
+		self.cap = cv2.VideoCapture(0)
 		self.cap.set(cv.CV_CAP_PROP_GAIN,0.0)
 		self.cap.set(cv.CV_CAP_PROP_EXPOSURE, 0.0)
 		self.cap.set(cv.CV_CAP_PROP_FPS, 1)
@@ -29,10 +30,11 @@ class CircleDetection(Detection):
 		self.lower_red = np.array([0,70,70])
 		self.upper_red = np.array([20,255,255])
 		self.kernel = np.ones((5,5),np.uint8)
-
-		self.radians = np.array([0 for x in range(5)])
-		self.positions = np.array([[0,0] for x in range(5)])
-		self.mean_position = 0
+		
+		# MEAN VALUES
+		#self.radians = np.array([0 for x in range(5)])
+		#self.positions = np.array([[0,0] for x in range(5)])
+		#self.mean_position = 0
 
 	def imageCapture(self):
 		# capture frame from camera
@@ -53,13 +55,16 @@ class CircleDetection(Detection):
 		if circles is not None:
 			circles = np.round(circles[0, :]).astype("int")
 			for (x, y, r) in circles:
-				self.radians[self.mean_position] = r
-				self.positions[self.mean_position] = [x, y]
-				self.mean_position = (self.mean_position +1) % 5
-				mean = self.positions.mean(axis = 0)
-				x = int(mean[0])
-				y = int(mean[1])
-				r = int(self.radians.mean())
+				
+				# MEAN VALUES
+				#self.radians[self.mean_position] = r
+				#self.positions[self.mean_position] = [x, y]
+				#self.mean_position = (self.mean_position +1) % 5
+				#mean = self.positions.mean(axis = 0)
+				#x = int(mean[0])
+				#y = int(mean[1])
+				#r = int(self.radians.mean())
+
 				if(self.draw):
 					cv2.circle(frame, (x,y), r ,(0, 255, 0), 4)
 					cv2.rectangle(frame, (x - 5, y - 5), (x + 5, y + 5), (0, 128, 255), -1)
@@ -87,6 +92,7 @@ class CircleDetection(Detection):
 if __name__ == '__main__':
 	circleDetection = CircleDetection(draw=True)
 	while(circleDetection.isRunning()):
+		time.sleep(.5)
 		circle = circleDetection.loop()
 		print circle
 
