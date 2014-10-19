@@ -7,12 +7,8 @@ class Detection:
 	def __init__(self, draw=False, blur=55):
 		self.blur=blur
 		self.draw = draw
-
 		if Detection.cap is None:
 			Detection.cap = cv2.VideoCapture(0)
-			Detection.cap.set(cv.CV_CAP_PROP_GAIN,0.0)
-			Detection.cap.set(cv.CV_CAP_PROP_EXPOSURE, 0.0)
-			Detection.cap.set(cv.CV_CAP_PROP_FPS, 1)
 		self.kernel = np.ones((5,5),np.uint8)
 
 	def loop(self):

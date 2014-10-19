@@ -2,11 +2,15 @@ import string,cgi,time
 from os import curdir, sep
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 from SocketServer import ThreadingMixIn
+from detection.Detection import Detection
+from detection.SquareDetection import SquareDetection
+from detection.CircleDetection import CircleDetection
 import cv
 import re
 import time
-capture = cv.CaptureFromCAM(0)
-img = cv.QueryFrame(capture)
+
+circleDetection = CircleDetection(draw=True)
+(circle, img) = circleDetection.loop()
 cameraQuality=75
 class MyHandler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -33,6 +37,7 @@ class MyHandler(BaseHTTPRequestHandler):
                 while 1:
                     time.sleep(.5)
                     img = cv.QueryFrame(capture)
+                    (circle, img) = circleDetection.loop()
                     cv2mat=cv.EncodeImage(".jpeg",img,(cv.CV_IMWRITE_JPEG_QUALITY,cameraQuality))
                     JpegData=cv2mat.tostring()
                     self.wfile.write("--aaboundary\r\n")

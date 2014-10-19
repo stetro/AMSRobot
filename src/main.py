@@ -11,8 +11,8 @@ if __name__ == '__main__':
 
 	while(circleDetection.isRunning()):
 		time.sleep(.5)
-		circle = circleDetection.loop()
+		(circle, frame) = circleDetection.loop()
 
 	while(squareDetection.isRunning()):
 		time.sleep(.5)
-		square = squareDetection.loop()
+		(square, frame) = squareDetection.loop()

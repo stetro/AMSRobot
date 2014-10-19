@@ -32,4 +32,4 @@ class CircleDetection(Detection):
 		circle = self.evaluateCircles(circles, frame)
 		if(self.draw):
 			self.drawWindow(frame, mask)
-		return circle
+		return (circle, frame)

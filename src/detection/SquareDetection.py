@@ -35,4 +35,4 @@ class SquareDetection(Detection):
 		square = self.evaluateSquares(squares, frame)
 		if(self.draw):
 			self.drawWindow(frame, mask)
-		return square
+		return (square, frame)
