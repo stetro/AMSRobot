@@ -8,7 +8,7 @@ class Detection:
 		self.blur=blur
 		self.draw = draw
 		if Detection.cap is None:
-			Detection.cap = cv.CaptureFromCAM(0) 
+			Detection.cap = cv2.VideoCapture(0) 
 		self.kernel = np.ones((5,5),np.uint8)
 
 	def loop(self):
@@ -21,7 +21,7 @@ class Detection:
 
 	def imageCapture(self):
 		# capture frame from camera
-                frame = cv.QueryFrame(Detection.cap)
+                ret, frame = Detection.cap.read()
 		# convert to HSV Map
 		hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 		blurred = cv2.medianBlur(hsv, self.blur)

@@ -19,9 +19,8 @@ class CircleDetection(Detection):
 		if circles is not None:
 			circles = np.round(circles[0, :]).astype("int")
 			for (x, y, r) in circles:		
-				if(self.draw):
-					cv2.circle(frame, (x,y), r ,(0, 255, 0), 4)
-					cv2.rectangle(frame, (x - 5, y - 5), (x + 5, y + 5), (0, 128, 255), -1)
+				cv2.circle(frame, (x,y), r ,(0, 255, 0), 4)
+				cv2.rectangle(frame, (x - 5, y - 5), (x + 5, y + 5), (0, 128, 255), -1)
 				return (x, y, r)
 		else:
 			return None

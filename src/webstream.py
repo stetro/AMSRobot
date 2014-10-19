@@ -9,7 +9,7 @@ import cv
 import re
 import time
 
-circleDetection = CircleDetection(draw=True)
+circleDetection = CircleDetection(draw=False)
 (circle, img) = circleDetection.loop()
 cameraQuality=75
 class MyHandler(BaseHTTPRequestHandler):
@@ -36,8 +36,8 @@ class MyHandler(BaseHTTPRequestHandler):
                 self.wfile.write("\r\n\r\n")
                 while 1:
                     time.sleep(.5)
-                    img = cv.QueryFrame(capture)
                     (circle, img) = circleDetection.loop()
+                    img = cv.fromarray(img)
                     cv2mat=cv.EncodeImage(".jpeg",img,(cv.CV_IMWRITE_JPEG_QUALITY,cameraQuality))
                     JpegData=cv2mat.tostring()
                     self.wfile.write("--aaboundary\r\n")
@@ -84,7 +84,7 @@ class ThreadedHTTPServer(ThreadingMixIn, HTTPServer):
 
 def main():
     try:
-        server = ThreadedHTTPServer(('localhost', 8080), MyHandler)
+        server = ThreadedHTTPServer(('0.0.0.0', 8080), MyHandler)
         print 'started httpserver...'
         server.serve_forever()
     except KeyboardInterrupt:
