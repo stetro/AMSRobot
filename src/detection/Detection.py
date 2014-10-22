@@ -1,14 +1,18 @@
 import cv2
 import cv2.cv as cv
 import numpy as np
+import io
+import picamera
+
 
 class Detection:
-	cap = None
-	def __init__(self, draw=False, blur=55):
+	stream = None
+	camera = None
+	def __init__(self, draw=False, blur=55,width=320,height=240):
+		Detection.camera=picamera.PiCamera()
+		Detection.camera.resolution = (width, height)
 		self.blur=blur
 		self.draw = draw
-		if Detection.cap is None:
-			Detection.cap = cv2.VideoCapture(0) 
 		self.kernel = np.ones((5,5),np.uint8)
 
 	def loop(self):
@@ -21,7 +25,12 @@ class Detection:
 
 	def imageCapture(self):
 		# capture frame from camera
-                ret, frame = Detection.cap.read()
+		Detection.stream = io.BytesIO()
+		Detection.camera.capture(Detection.stream, format='jpeg')	
+		#convert image into numpy array
+		data = np.fromstring(Detection.stream.getvalue(), dtype=np.uint8)
+		#turn the array into a cv2 image
+		frame = cv2.imdecode(data, 1)
 		# convert to HSV Map
 		hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 		blurred = cv2.medianBlur(hsv, self.blur)
@@ -32,3 +41,6 @@ class Detection:
 	def drawWindow(self, frame, mask):
 		cv2.imshow('VideoWindow', frame)
 		cv2.imshow('FrameWindow', mask)
+
+	def __del__(self):
+		Detection.camera.close()
