@@ -15,6 +15,7 @@ union(){
 	difference(){
 		translate([0])
 		cube([2.5,15,25]);
+
 		translate([-0.1,7.5,20])
 		rotate(90,[0,1,0])
 		cylinder(d=2.5, h=2.7);
@@ -22,8 +23,42 @@ union(){
 	difference(){
 		translate([67.5,0,0])
 		cube([2.5,15,25]);
+
 		translate([67.4,7.5,20])
 		rotate(90,[0,1,0])
 		cylinder(d=2.5, h=2.7);
 	}	
+
+
+
+	difference(){
+		translate([0,22.5,0])
+		cube([2.5,45,35]);
+
+		translate([0,32.5,0])
+		cube([2.5,25,35]);
+
+		translate([-0.1,27.5,30])
+		rotate(90,[0,1,0])
+		cylinder(d=4, h=2.7);
+
+		translate([-0.1,62.5,30])
+		rotate(90,[0,1,0])
+		cylinder(d=4, h=2.7);
+	}
+	difference(){
+		translate([67.5,22.5,0])
+		cube([2.5,45,35]);
+
+		translate([67.5,32.5,0])
+		cube([2.5,25,35]);
+
+		translate([67.4,27.5,30])
+		rotate(90,[0,1,0])
+		cylinder(d=4, h=2.7);
+
+		translate([67.4,62.5,30])
+		rotate(90,[0,1,0])
+		cylinder(d=4, h=2.7);
+	}
 }
