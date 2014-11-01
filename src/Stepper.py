@@ -6,6 +6,11 @@ class Stepper:
   def __init__(self,A,B,C,D,time=0.1):
     #use gpio names
     GPIO.setmode(GPIO.BCM)
+    self.D=D
+    self.C=C
+    self.B=B
+    self.A=A
+		
     # Verwendete Pins am Rapberry Pi
     #D = 26
     #C = 20
@@ -15,68 +20,68 @@ class Stepper:
     self.time = time
 
     # Pins aus Ausgaenge definieren
-    GPIO.setup(A,GPIO.OUT)
-    GPIO.setup(B,GPIO.OUT)
-    GPIO.setup(C,GPIO.OUT)
-    GPIO.setup(D,GPIO.OUT)
-    GPIO.output(A, False)
-    GPIO.output(B, False)
-    GPIO.output(C, False)
-    GPIO.output(D, False)
+    GPIO.setup(self.A,GPIO.OUT)
+    GPIO.setup(self.B,GPIO.OUT)
+    GPIO.setup(self.C,GPIO.OUT)
+    GPIO.setup(self.D,GPIO.OUT)
+    GPIO.output(self.A, False)
+    GPIO.output(self.B, False)
+    GPIO.output(self.C, False)
+    GPIO.output(self.D, False)
 
   # Schritte 1 - 8 festlegen
-  def Step(nr,on=True):
+  def Step(self,nr,on=True):
       if on==True:
         if nr==0:
-          GPIO.output(D, True)
+          GPIO.output(self.D, True)
         elif nr==1:
-          GPIO.output(D, True)
-          GPIO.output(C, True)
+          GPIO.output(self.D, True)
+          GPIO.output(self.C, True)
         elif nr==2:
-          GPIO.output(C, True)
+          GPIO.output(self.C, True)
         elif nr==3:
-          GPIO.output(B, True)
-          GPIO.output(C, True)
+          GPIO.output(self.B, True)
+          GPIO.output(self.C, True)
         elif nr==4:
-          GPIO.output(B, True)
+          GPIO.output(self.B, True)
         elif nr==5:
-          GPIO.output(A, True)
-          GPIO.output(B, True)
+          GPIO.output(self.A, True)
+          GPIO.output(self.B, True)
         elif nr==6:
-          GPIO.output(A, True)
+          GPIO.output(self.A, True)
         elif nr==7:
-          GPIO.output(D, True)
-          GPIO.output(A, True)
+          GPIO.output(self.D, True)
+          GPIO.output(self.A, True)
       else:
         if nr==0:
-          GPIO.output(D, False)
+          GPIO.output(self.D, False)
         elif nr==1:
-          GPIO.output(D, False)
-          GPIO.output(C, False)
+          GPIO.output(self.D, False)
+          GPIO.output(self.C, False)
         elif nr==2:
-          GPIO.output(C, False)
+          GPIO.output(self.C, False)
         elif nr==3:
-          GPIO.output(B, False)
-          GPIO.output(C, False)
+          GPIO.output(self.B, False)
+          GPIO.output(self.C, False)
         elif nr==4:
-          GPIO.output(B, False)
+          GPIO.output(self.B, False)
         elif nr==5:
-          GPIO.output(A, False)
-          GPIO.output(B, False)
+          GPIO.output(self.A, False)
+          GPIO.output(self.B, False)
         elif nr==6:
-          GPIO.output(A, False)
+          GPIO.output(self.A, False)
         elif nr==7:
-          GPIO.output(D, False)
-          GPIO.output(A, False)
+          GPIO.output(self.D, False)
+          GPIO.output(self.A, False)
 
   # Volle Umdrehung
-  def round():
-    for i range(0,7):
+  def round(self):
+    for i in range(0,7):
       if i>0:
         Step(i-1,False)
         sleep(time)
       Step(i,True)
       #print i
 
-  def __del__():
+  def __del__(self):
     GPIO.cleanup()
