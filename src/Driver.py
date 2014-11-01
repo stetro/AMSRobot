@@ -56,6 +56,6 @@ class Driver():
 if __name__ =="__main__":
   d=Driver();
   for i in range(0,100):
-    #d.forwards()
-		d.backwards()
+    d.forwards()
+		#d.backwards()
 		#d.rotateLeft()
