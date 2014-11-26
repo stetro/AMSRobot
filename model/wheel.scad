@@ -1,7 +1,7 @@
 //wheel
 d=50;//diameter
 hmount=10;//width of inner ring
-dmount=4;//diameter of inner ring
+dmount=5;//diameter of inner ring
 spikes=5;
 //wheel
 difference(){
