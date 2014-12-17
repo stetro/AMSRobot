@@ -12,7 +12,7 @@ if __name__ == '__main__':
 	for i in range(0,10):
 		d.forwards()
 
-	circleDetection = CircleDetection(draw=False,width=640 ,height= 480)
+	circleDetection = CircleDetection(draw=False,width=640 ,height= 480, debug=True)
 
 	while(circleDetection.isRunning()):
 		time.sleep(.5)

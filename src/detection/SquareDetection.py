@@ -4,11 +4,11 @@ import numpy as np
 from detection.Detection import Detection
 
 class SquareDetection(Detection):
-	def __init__(self, draw=False, blur=31, width=640, height=480):
+	def __init__(self, draw=False, blur=31, width=640, height=480, debug=False):
 		# green
 		self.lower_color = np.array([60,70,70])
 		self.upper_color = np.array([90,255,255])
-		Detection.__init__(self, draw, blur, width, height)
+		Detection.__init__(self, draw, blur, width, height, debug)
 
 	def squareDetection(self, mask):
 		contours, hier = cv2.findContours(mask,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
@@ -23,8 +23,9 @@ class SquareDetection(Detection):
 			        hull = cv2.approxPolyDP(hull,0.1*cv2.arcLength(hull,True),True)
 			        if len(hull) == 4:
 			        	result.append(hull)	
-			if self.draw:
+			if self.draw or self.debug:
 				cv2.drawContours(frame,result,0,(0,255,0),2)
+				self.doDebug(frame)
 			return result
 		else:
 			return None

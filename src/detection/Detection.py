@@ -8,10 +8,12 @@ import picamera
 class Detection:
 	stream = None
 	camera = None
-	def __init__(self, draw=False, blur=20,width=640,height=480):
+	framecount = 0
+	def __init__(self, draw=False, blur=20,width=640,height=480, debug=False):
 		if Detection.camera == None:
 			Detection.camera=picamera.PiCamera()
 			Detection.camera.resolution = (width, height)
+		self.debug=debug
 		self.running = True
 		self.blur=blur
 		self.draw = draw
@@ -26,6 +28,12 @@ class Detection:
 	def stop(self):
 		self.running = False
 
+	def doDebug(self, frame):
+		if self.debug:
+			cv2.imwrite("debug%03d.jpg" % self.framecount, frame)
+			self.framecount += 1
+	
+
 	def imageCapture(self):
 		# capture frame from camera
 		Detection.stream = io.BytesIO()
@@ -39,6 +47,8 @@ class Detection:
 		blurred = cv2.medianBlur(hsv, self.blur)
 		# create mask 
 		mask = cv2.inRange(blurred, self.lower_color, self.upper_color)
+
+		
 		return (frame, mask)
 
 	def drawWindow(self, frame, mask):
