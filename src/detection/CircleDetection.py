@@ -4,11 +4,11 @@ import numpy as np
 from detection.Detection import Detection
 
 class CircleDetection(Detection):
-	def __init__(self, draw=False, blur=55):
+	def __init__(self, draw=False, blur=55, width=640, height=480):
 		# red
 		self.lower_color = np.array([0,70,70])
 		self.upper_color = np.array([20,255,255])
-		Detection.__init__(self, draw, blur)
+		Detection.__init__(self, draw, blur, width, height)
 
 	def circleDetection(self, mask):
 		# find circles

@@ -8,7 +8,7 @@ import picamera
 class Detection:
 	stream = None
 	camera = None
-	def __init__(self, draw=False, blur=55,width=320,height=240):
+	def __init__(self, draw=False, blur=20,width=640,height=480):
 		Detection.camera=picamera.PiCamera()
 		Detection.camera.resolution = (width, height)
 		self.blur=blur
@@ -40,7 +40,6 @@ class Detection:
 
 	def drawWindow(self, frame, mask):
 		cv2.imshow('VideoWindow', frame)
-		cv2.imshow('FrameWindow', mask)
 
 	def __del__(self):
 		Detection.camera.close()

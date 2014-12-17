@@ -4,11 +4,11 @@ import numpy as np
 from detection.Detection import Detection
 
 class SquareDetection(Detection):
-	def __init__(self, draw=False, blur=31):
+	def __init__(self, draw=False, blur=31, width=640, height=480):
 		# green
 		self.lower_color = np.array([60,70,70])
 		self.upper_color = np.array([90,255,255])
-		Detection.__init__(self, draw, blur)
+		Detection.__init__(self, draw, blur, width, height)
 
 	def squareDetection(self, mask):
 		contours, hier = cv2.findContours(mask,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
