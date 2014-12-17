@@ -9,8 +9,10 @@ class Detection:
 	stream = None
 	camera = None
 	def __init__(self, draw=False, blur=20,width=640,height=480):
-		Detection.camera=picamera.PiCamera()
-		Detection.camera.resolution = (width, height)
+		if Detection.camera == None:
+			Detection.camera=picamera.PiCamera()
+			Detection.camera.resolution = (width, height)
+		self.running = True
 		self.blur=blur
 		self.draw = draw
 		self.kernel = np.ones((5,5),np.uint8)
@@ -19,9 +21,10 @@ class Detection:
 		raise NotImplementedError()
 
 	def isRunning(self):
-		if cv2.waitKey(1) & 0xFF == ord('q'):
-			return False
-		return True
+		return self.running
+
+	def stop(self):
+		self.running = False
 
 	def imageCapture(self):
 		# capture frame from camera

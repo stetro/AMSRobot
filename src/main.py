@@ -11,30 +11,39 @@ if __name__ == '__main__':
 	d=Driver(0.003)
 	for i in range(0,10):
 		d.forwards()
-#	squareDetection = SquareDetection(draw=False)
+
 	circleDetection = CircleDetection(draw=False,width=640 ,height= 480)
-
-
 
 	while(circleDetection.isRunning()):
 		time.sleep(.5)
 		(circle, frame) = circleDetection.loop()
+		print("circle found: "+str(circle))
 		if circle==None:
 			for i in range(0,30):
 				d.rotateRight()
 		elif circle[1] > 300:
+			print("YAY!!! left direction")
 			for i in range(0,5):
 				d.rotateLeft()
 		elif circle[1] < 200:
+			print("YAY!!! right direction")
 			for i in range(0,5):
 				d.rotateRight()
 		else:
-			print("Found!!! YAY")
+			print("YAY!!! straight direction")
+			for i in range(0,100):
+				d.forwards()
+		if circle != None and circle[2] > 130:
+			circleDetection.stop()
 			for i in range(0,100):
 				d.forwards()
 
-		print(str(circle))
+	squareDetection = SquareDetection(draw=False)
 
-#	while(squareDetection.isRunning()):
-#		time.sleep(.5)
-#		(square, frame) = squareDetection.loop()
+	while(squareDetection.isRunning()):
+		time.sleep(.5)
+		(square, frame) = squareDetection.loop()
+		print("square found: "+str(square))
+		if len(square) == 0:
+			for i in range(0,5):
+				d.rotateRight()
