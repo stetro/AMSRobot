@@ -5,4 +5,5 @@ A robot project for a lecture called AMS - Special aspects of autonomous mobile 
 
 Presentations
 -------------
-1. [Initial Presentation](http://stetro.github.io/AMSRobot/presentation/initial/#/title)
+1. [Initial Presentation](http://stetro.github.io/AMSRobot/presentation/initial/#)
+1. [Final Presentation](http://stetro.github.io/AMSRobot/presentation/final/#)

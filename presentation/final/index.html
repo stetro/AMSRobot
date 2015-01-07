@@ -1,0 +1,115 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>AMS Robot - Final presentation</title>
+
+    <link href="css/impress-demo.css" rel="stylesheet" />
+
+</head>
+
+<body class="impress-not-supported">
+
+    <div class="fallback-message">
+        <p>Your browser <b>doesn't support the features required</b> by impress.js,
+            so you are presented with a simplified version of this presentation.</p>
+        <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+    </div>
+
+    <div id="impress">
+        <div id="title" class="step" data-y="-2000" data-x="0" data-scale="9">
+            <span class="try">our AMS</span>
+            <h1>Robot</h1>
+            <span class="footnote">by Johannes Magraf and Steffen Tröster</span>
+        </div>
+
+        <div id="its" class="step" data-x="850" data-y="4000" data-rotate="90" data-scale="5">
+            <h1>Agenda</h1>
+            <ul>
+                <li>actual autonomous task</li>
+                <li>used hardware and software</li>
+                <li>image registration</li>
+                <li>stepper motor controlling</li>
+                <li>iterations and implementation</li>
+                <li>results and improvements</li>
+            </ul>
+        </div>
+
+        <div class="step" data-x="850" data-y="9000" data-rotate="90" data-scale="5">
+            <h1>Task</h1>
+            <p>"The robot should find and move a colored
+                <b class="scaling">ball</b> into a colored <b class="scaling">goal</b> on
+                a flat ground."</p>
+        </div>
+
+        <div class="step" data-x="-4000" data-y="9000" data-rotate="180" data-scale="5">
+            <h1>Used Hardware
+	    </h1>
+            <ul>
+                <li>Raspberry Pi as controller
+                    <img src="rpi.png" alt="" width="200" style="float: right;">
+                </li>
+                <li>Raspberry Pi camera module</li>
+                <li>stepper motor with driver</li>
+                <li>
+                    3D printed construction</br>
+                    <img src="printrbot.png" alt="" width="200" style="float: right;">
+                </li>
+            </ul>
+        </div>
+
+        <div class="step" data-x="-4000" data-y="14000" data-rotate="180" data-scale="5">
+            <img src="circuit.png" alt="" width="85%">
+        </div>
+
+        <div class="step" data-x="-10000" data-y="9000" data-rotate="180" data-scale="5">
+            <h1>Used Software
+	    </h1>
+            <ul>
+                <li>python as programming language
+                    <img src="python.png" alt="" width="150" style="float: right;">
+                </li>
+                <li>Raspbian linux as OS</li>
+                <li>OpenCV for image processing</br>
+                    <img src="opencv.png" alt="" width="151" style="float: right;">
+                </li>
+            </ul>
+        </div>
+
+        <div class="step" data-x="-10000" data-y="14000" data-rotate="180" data-scale="5">
+            <img src="process.png" alt="" wdith="85%">
+        </div>
+
+
+        <div class="step" data-x="-15000" data-y="8000" data-rotate="270" data-scale="5">
+            <h1>Building Process</h1>
+            <ul>
+		    <li>constructing elements for the printer</li>
+		    <li>Implementing object detection</li>
+		    <li>building our robot and implementing movement</li>
+		    <li>combining all together and implementing actual task</li>
+            </ul>
+        </div>
+
+
+        <div class="step" data-x="-15000" data-y="2000" data-rotate="270" data-scale="5">
+		<script src="https://embed.github.com/view/3d/stetro/AMSRobot/master/model/wheel.stl"></script>
+		<script src="https://embed.github.com/view/3d/stetro/AMSRobot/master/model/robot_body.stl"></script>
+	</div>
+
+        <div class="step" data-x="-15000" data-y="-2000" data-rotate="270" data-scale="5">
+		<img src="motor.jpg" alt="" width="300"/>
+		<img src="test.jpg" alt="" width="500"/>
+	</div>
+    <script src="js/impress.js"></script>
+    <script>
+        impress().init();
+    </script>
+
+</body>
+
+</html>
