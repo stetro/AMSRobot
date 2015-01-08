@@ -30,7 +30,7 @@
         <div id="its" class="step" data-x="850" data-y="4000" data-rotate="90" data-scale="5">
             <h1>Agenda</h1>
             <ul>
-                <li>actual autonomous task</li>
+                <li>task</li>
                 <li>used hardware and software</li>
                 <li>image registration</li>
                 <li>stepper motor controlling</li>
@@ -62,7 +62,22 @@
             </ul>
         </div>
 
-        <div class="step" data-x="-4000" data-y="14000" data-rotate="180" data-scale="5">
+        <div id="raspberry" class="step" data-x="-6000" data-y="9000" data-rotate="180"  data-scale="1">
+            <h1>Raspberry Pi</h1>
+            <ul>
+              <li>10 of 40 GPIO Pins used </li>
+              <li>USB Port for WLAN </li>
+              <li>I2C for Pi Camera</li>
+              <li>700MHz CPU</li>
+                  <img src="wlan.png" alt="" width="300" style="float: right;">
+                  <img src="raspberry.png" alt="" width="300" style="float: right;">
+            </ul>
+        </div>
+
+       <div id="costs">
+       </div>
+     
+        <div class="step" data-x="-4000" data-y="14000" data-rotate="180" data-scale="1">
             <img src="circuit.png" alt="" width="85%">
         </div>
 
@@ -80,12 +95,24 @@
             </ul>
         </div>
 
-        <div class="step" data-x="-10000" data-y="14000" data-rotate="180" data-scale="5">
-            <img src="process.png" alt="" wdith="85%">
+        <div id="process" class="step" data-x="-13500" data-y="10000" data-rotate="180" data-scale="3">
+            <img src="process.png" alt="" wdith="85%" >
+        </div>
+        
+        <div class="step" data-x="-13500" data-y="8000" data-rotate="180" data-scale="3">
+           <h2>Ball Detection</h2>
+               Hough Circle approach 
+               <div align="center"><img src="circle-def.png" alt="" width="300" ></div>
+               <img src="circle.png" alt="" >
         </div>
 
+        <div class="step" data-x="-13500" data-y="6000" data-rotate="180" data-scale="3">
+           <h2>Square Detection</h2>
+               Convex Hull approach
+               <img src="square-hull.png" alt="" >
+        </div>
 
-        <div class="step" data-x="-15000" data-y="8000" data-rotate="270" data-scale="5">
+        <div class="step" data-x="-19000" data-y="8000" data-rotate="270" data-scale="5">
             <h1>Building Process</h1>
             <ul>
 		    <li>constructing elements for the printer</li>
@@ -95,8 +122,14 @@
             </ul>
         </div>
 
+        <div class="step" data-x="-15000" data-y="2000" data-rotate="90" data-scale="5">
+                <h1>Iteration One</h1>
+		<script src="https://embed.github.com/view/3d/stetro/AMSRobot/6e5bae/model/wheel.stl"></script>
+		<script src="https://embed.github.com/view/3d/stetro/AMSRobot/ff792ec/model/robot_body.stl"></script>
+	</div>
 
-        <div class="step" data-x="-15000" data-y="2000" data-rotate="270" data-scale="5">
+        <div class="step" data-x="-19000" data-y="-3000" data-rotate="270" data-scale="5">
+                <h1>Iteration Two</h1>
 		<script src="https://embed.github.com/view/3d/stetro/AMSRobot/master/model/wheel.stl"></script>
 		<script src="https://embed.github.com/view/3d/stetro/AMSRobot/master/model/robot_body.stl"></script>
 	</div>
