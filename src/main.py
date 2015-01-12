@@ -21,14 +21,14 @@ if __name__ == '__main__':
 		if circle==None:
 			for i in range(0,30):
 				d.rotateRight()
-		elif circle[1] > 300:
+		elif circle[0] > 400:
 			print("YAY!!! left direction")
 			for i in range(0,5):
-				d.rotateLeft()
-		elif circle[1] < 200:
+				d.rotateRight()
+		elif circle[0] < 266:
 			print("YAY!!! right direction")
 			for i in range(0,5):
-				d.rotateRight()
+				d.rotateLeft()
 		else:
 			print("YAY!!! straight direction")
 			for i in range(0,100):
