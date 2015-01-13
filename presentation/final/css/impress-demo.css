@@ -491,3 +491,14 @@ body     { pointer-events: none; }
     display: block;
 }
 
+
+code{
+    font-size:10px;
+    line-height: 10px;
+}
+
+#frontimg{
+    position: absolute;
+    top: 50px;
+    right: -300px;
+}
