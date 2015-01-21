@@ -144,7 +144,6 @@ To install and use our implementation you need to install some necessary librari
 sudo apt-get install libopencv-dev python-opencv 
 sudo apt-get install python-setuptools
 easy_install --user picamera
-
 ```
 
 To run the project code you also need to have a working raspberrypi camera. To check if an attached camera is working properly, the following command is capturing a sample photo:
