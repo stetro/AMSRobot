@@ -138,12 +138,31 @@ Evaluation(Jojo)
 Usage
 -----
 
+To install and use our implementation you need to install some necessary libraries for the raspbian operating system. All of them are prebuild and can be installed with the package control as following: 
+
+> sudo apt-get install libopencv-dev python-opencv 
+> 
+> sudo apt-get install python-setuptools
+>
+> easy_install --user picamera
+
+To run the project code you also need to have a working raspberrypi camera. To check if an attached camera is working properly, the following command is capturing a sample photo:
+
+> raspistill -o cam.jpg
+
+This is the actual python command to start the robot. Root rights are needed to be able to control GPIO pins for the steppermotors.
+
+> sudo python main.py
+
+
+
+
 
 Conclusion
 ----------
 
 Our main problem for this hardware and software decision is performance as we reached a feedback loop time of round about 5 seconds. This is quite a long time and is caused by the calculation speed of the Raspberry Pi during the image processing. Of cause, speed wasn't the main goal for this project, thus we could actually tweak and change our implementation to gain some performance improvements. But still, there would be a big delay during the image processing.
 
-To solve this issue we thought about outsourcing of the computationally intensive image processing. One way to do this is the ROS - Robot Operating System. 
+To solve this issue we thought about outsourcing of the computationally intensive image processing. One way to do this is the ROS - Robot Operating System which will be shortly introduces in the following chapter. 
 
 ## ROS
