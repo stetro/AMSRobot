@@ -74,14 +74,6 @@ class Stepper:
           GPIO.output(self.B, False)
           GPIO.output(self.C, False)
           GPIO.output(self.D, True)
-	  
-  def round(self):
-    for i in range(0,7):
-      if i>0:
-        Step(i-1)
-        sleep(time)
-      Step(i)
-      #print i
 
   def __del__(self):
     GPIO.cleanup()

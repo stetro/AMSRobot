@@ -36,18 +36,52 @@ We will implement the ball detection with OpenCV. This library is designed for c
 
 
 
-Umsetzung
----------
+Implementation
+--------------
+
 *Konstruktion(Jojo)
 *Iterationen(Zahnräder)
 *SCAD-STL-GCODE Workflow
 *Slic3r
 
-*Software(Steffen)
-*Bildverarbeitung (Objekterkennung mit HSV ...)
-*Klassendiagramm
-*Schrittmotoren
-*Zusammenspiel
+
+
+## Software
+
+This subsection will present our python based implementation in detail. It shows the structure and the use of the mentioned framework in this project.
+
+### Project Structure
+Our project structure is quite simple and is shown in the following class diagram. There is one inheritence shown between the Detection and the two childs SquareDetection and CircleDetection. Detection is generalizin the whole access to the camera module and ech child is running the specific image processing, described in the following chapter. ![image](ClassDiagram.jpg)
+
+### Imageprocessing with OpenCV
+
+#### Circle Deteciton
+#### Square Detection
+
+
+### Addressing Steppermotors
+
+Each steppermotor has 4 input wires (A to D) to control the step movement of the inner restricted rotor. There are different modes to use a stepper motor which will effect the movement speed and torque. The first four colums are showing fullstep mode which will run fast with less torque. The second part is showing halfstep mode which will run fast but with less torque.
+
+|       | A | B | C | D |   | A | B | C | D |
+|-------|---|---|---|---|---|---|---|---|---|
+| **1** | 1 | 0 | 0 | 0 |   | 1 | 0 | 0 | 0 |
+| **2** | 0 | 1 | 0 | 0 |   | 1 | 1 | 0 | 0 |
+| **3** | 0 | 0 | 1 | 0 |   | 0 | 1 | 0 | 0 |
+| **4** | 0 | 0 | 0 | 1 |   | 0 | 1 | 1 | 0 |
+| **5** |   |   |   |   |   | 0 | 0 | 1 | 0 |
+| **6** |   |   |   |   |   | 0 | 0 | 1 | 1 |
+| **7** |   |   |   |   |   | 0 | 0 | 0 | 1 |
+| **8** |   |   |   |   |   | 1 | 0 | 0 | 1 |
+
+In this project we don't needed to have too much torque and therefor we decided to use fullstep to gain a little bit more speed. The detailed pin addressing is happening in the Stepper class and it can handle both modes, depending on the input values from our Driver class.
+
+### Zusammenspiel
+
+The following image is showing the state mashine our implementation. It shows the two main loops for the circle or squardetection and also the decision situation for the driver controller. Each image capturing process is coming from one of the both detection implementation and each movement-sequenz is going to the diver instance d.
+
+![image](presentation/final/process.png)
+
 
 Evaluation(Jojo)
 ----------
@@ -56,8 +90,16 @@ Evaluation(Jojo)
 *Kritik (RPI? ok?) ...
 *RPI Schrittmotor Kritik
 
-Ausblick (STeffen)
+Usage
+-----
+
+
+Ausblick
 --------
-*Threading
-*ROS
+Our main problem for this hardware and software decision is performance as we reached a feedback loop time of round about 5 seconds. This is quite a long time and is caused by the calculation speed of the Raspberry Pi during the image processing. Of cause, speed wasn't the main goal for this project, thus we could actually tweak and change our implementation to gain some performance improvements. But still, there would be a big delay during the image processing.
+
+To solve this issue we thought about outsourcing of the computationally intensive image processing. One way to do this is the ROS - Robot Operating System. 
+
+## ROS
+
 
