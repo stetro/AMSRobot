@@ -3,7 +3,7 @@ AMS Robot Documentation
 
 Introduction
 ------------
-This documentation is covering our research and implementation for our own robot. The idea was to walk through all the necessary steps to build an autonomous robot which is solving a predefined problem. The following second will cover our problem definition and the goals, we would like to achive at the end of our build.
+This documentation is covering our research and implementation for our own autonomous robot. The idea was to walk through all the necessary steps to build an autonomous robot which is solving a predefined problem. The following section will cover our problem definition and the goals, we would like to achive at the end of our build.
 
 ### Problem Definition and Goals
 
