@@ -140,19 +140,20 @@ Usage
 
 To install and use our implementation you need to install some necessary libraries for the raspbian operating system. All of them are prebuild and can be installed with the package control as following: 
 
-> sudo apt-get install libopencv-dev python-opencv 
-> 
-> sudo apt-get install python-setuptools
->
-> easy_install --user picamera
+```
+sudo apt-get install libopencv-dev python-opencv 
+sudo apt-get install python-setuptools
+easy_install --user picamera
+
+```
 
 To run the project code you also need to have a working raspberrypi camera. To check if an attached camera is working properly, the following command is capturing a sample photo:
 
-> raspistill -o cam.jpg
+```raspistill -o cam.jpg```
 
 This is the actual python command to start the robot. Root rights are needed to be able to control GPIO pins for the steppermotors.
 
-> sudo python main.py
+```sudo python main.py```
 
 
 
