@@ -1,25 +1,25 @@
 from time import sleep
 import RPi.GPIO as GPIO
 
+##
+## This class is controlling the single GPIO pins based 
+## on the step positon of a single stepper moter.
+##
 class Stepper:
 
   def __init__(self,A,B,C,D,time=0.1):
-    #use gpio names
+
+    # use gpio board pin numbers
     GPIO.setmode(GPIO.BOARD)
     self.D=D
     self.C=C
     self.B=B
     self.A=A
-		
-    # Verwendete Pins am Rapberry Pi
-    #D = 26
-    #C = 20
-    #B = 19
-    #A = 21
-    #wait time
+
+    # wait time
     self.time = time
 
-    # Pins aus Ausgaenge definieren
+    # Define GPIO pins as output
     GPIO.setup(self.A,GPIO.OUT)
     GPIO.setup(self.B,GPIO.OUT)
     GPIO.setup(self.C,GPIO.OUT)
@@ -29,7 +29,10 @@ class Stepper:
     GPIO.output(self.C, False)
     GPIO.output(self.D, False)
 
-  # Schritte 1 - 8 festlegen
+  # Steps from 1 to 8
+  # The Step function can be used in full- or halfstep mode:
+  # Fullstepp: 0, 2, 4, 6
+  # Halfstepp: 0, 1, 2, 3, 4, 5, 6, 7
   def Step(self,nr):
         if nr==0:
           GPIO.output(self.A, False)
@@ -71,14 +74,6 @@ class Stepper:
           GPIO.output(self.B, False)
           GPIO.output(self.C, False)
           GPIO.output(self.D, True)
-	  
-  def round(self):
-    for i in range(0,7):
-      if i>0:
-        Step(i-1)
-        sleep(time)
-      Step(i)
-      #print i
 
   def __del__(self):
     GPIO.cleanup()
