@@ -13,6 +13,7 @@ class Detection:
 		if Detection.camera == None:
 			Detection.camera=picamera.PiCamera()
 			Detection.camera.resolution = (width, height)
+			Detection.camera.awb_mode = "tungsten"
 		self.debug=debug
 		self.running = True
 		self.blur=blur
@@ -30,8 +31,8 @@ class Detection:
 
 	def doDebug(self, frame):
 		if self.debug:
-			cv2.imwrite("debug%03d.jpg" % self.framecount, frame)
-			self.framecount += 1
+			cv2.imwrite("debug%03d.jpg" % Detection.framecount, frame)
+			Detection.framecount += 1
 	
 
 	def imageCapture(self):
