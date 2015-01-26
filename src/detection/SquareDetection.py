@@ -6,8 +6,8 @@ from detection.Detection import Detection
 class SquareDetection(Detection):
 	def __init__(self, draw=False, blur=31, width=640, height=480, debug=False):
 		# green
-		self.lower_color = np.array([60,70,70])
-		self.upper_color = np.array([90,255,255])
+		self.lower_color = np.array([80, 50, 50], dtype=np.uint8)
+		self.upper_color = np.array([120,255,255], dtype=np.uint8)
 		Detection.__init__(self, draw, blur, width, height, debug)
 
 	def squareDetection(self, mask):
