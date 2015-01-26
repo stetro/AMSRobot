@@ -65,8 +65,27 @@ The choosen stepper motor 28BYJ48 is an unipolar stepper motor. According to the
 | 3    | 0 | 0 | + | + |
 | 4    | + | 0 | 0 | + |
 
+But we also implemented the possibility to use Half-Step-Mode. In Half-Step-Mode the time consumed to make one rotation of the wheel is double the time than the one in Full-Step-mode. But on the other hand the torque in Full-Step-Mode is lower. So in Full-Step-Mode there is a higher risk to lose steps. Steps are lost if the tork is not sufficient to turn the motors axis sufficiently far. Because the torque on our wheels is sufficient in Full-Step-Mode and we wanted to let the robot move a bit faster, we choose Full-Step-Mode.
+
+| Step | A | B | C | D |
+|------|---|---|---|---|
+| 1    | + | 0 | 0 | 0 |
+| 2    | + | + | 0 | 0 |
+| 3    | 0 | + | 0 | 0 |
+| 4    | 0 | + | + | 0 |
+| 5    | 0 | 0 | + | 0 |
+| 6    | 0 | 0 | + | + |
+| 7    | 0 | 0 | 0 | + |
+| 8    | + | 0 | 0 | + |
+
+
+
 <img src="presentation/final/unipolar-stepper.jpg" alt="Drawing" style="width: 200px;"/>
 [src](http://de.wikipedia.org/wiki/Schrittmotor#mediaviewer/File:Stepmotscheme.jpg)
+
+The Energy-Supply of the Raspberry Pi is provided by an external power source. It is attached to the Raspberry Pi and the also directly to the stepper motor driver. we chose this wiring because the pins of the raspberry pi can not provide sufficient amount of energy for the stepper motors.
+
+#### WLAN
 
 
 * Hardware Basis(jojo)
