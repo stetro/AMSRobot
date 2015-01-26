@@ -5,7 +5,7 @@ from detection.Detection import Detection
 
 class CircleDetection(Detection):
 	def __init__(self, draw=False, blur=55, width=640, height=480, debug=False):
-		# red
+		# orange color mask in HSV space (also constrains heu and satuation)
 		self.lower_color = np.array([15,70,90])
 		self.upper_color = np.array([35,200,200])
 		Detection.__init__(self, draw, blur, width, height, debug)

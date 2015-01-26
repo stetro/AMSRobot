@@ -5,7 +5,7 @@ from detection.Detection import Detection
 
 class SquareDetection(Detection):
 	def __init__(self, draw=False, blur=31, width=640, height=480, debug=False):
-		# green
+		# blue color mask in HSV space (also constrains heu and satuation)
 		self.lower_color = np.array([80, 50, 50], dtype=np.uint8)
 		self.upper_color = np.array([120,255,255], dtype=np.uint8)
 		Detection.__init__(self, draw, blur, width, height, debug)
