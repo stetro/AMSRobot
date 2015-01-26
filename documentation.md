@@ -60,10 +60,10 @@ The choosen stepper motor 28BYJ48 is an unipolar stepper motor. According to the
 
 | Step | A | B | C | D |
 |------|---|---|---|---|
-| 1    | + | + | 0 | 0 |
-| 2    | 0 | + | + | 0 |
-| 3    | 0 | 0 | + | + |
-| 4    | + | 0 | 0 | + |
+| 1    | + | 0 | 0 | 0 |
+| 2    | 0 | + | 0 | 0 |
+| 3    | 0 | 0 | + | 0 |
+| 4    | 0 | 0 | 0 | + |
 
 But we also implemented the possibility to use Half-Step-Mode. In Half-Step-Mode the time consumed to make one rotation of the wheel is double the time than the one in Full-Step-mode. But on the other hand the torque in Full-Step-Mode is lower. So in Full-Step-Mode there is a higher risk to lose steps. Steps are lost if the tork is not sufficient to turn the motors axis sufficiently far. Because the torque on our wheels is sufficient in Full-Step-Mode and we wanted to let the robot move a bit faster, we choose Full-Step-Mode.
 
@@ -110,6 +110,12 @@ We will implement the ball detection with OpenCV. This library is designed for c
 
 Implementation
 --------------
+We completely designed the robot from scratch.
+This was only possible to do because we had access to a 3D-Printer. Even though 3D-Printers are already used since many years for rapid prototyping, they just became affordable to a broader public just within the last few years.
+
+### Used 3D-Printer
+We used a 3D-Printer using the Fused Deposition Modeling Method. This kind of 3D-Printer melds some kind of plastic-filament by simlpy heating it to 200-220*C. the heated filament is extruded and the object is created layer by layer
+
 
 *Konstruktion(Jojo)
 *Iterationen(Zahnräder)
@@ -155,20 +161,25 @@ The following image is showing the state mashine our implementation. It shows th
 ![image](presentation/final/process.png)
 
 
-Evaluation(Jojo)
+Evaluation
 ----------
-*Ziele erreicht?
-*Bilderreihe
-*Kritik (RPI? ok?) ...
-*RPI Schrittmotor Kritik
+Our aim was to build an robot that can find a colored ball and move it to a colored square.
+
+As a result of this course our final robot is able to fulfill that aim unter the given constraints (see Chapter: Problem Definition and Goals).
+
+In the folowing sequence of images you see the robot searching and and finding the ball. Driving to the ball and then switching to square-detection mode. Searching and finding the colored square and then driving and finally reaching the goal.
+
+![image]()
+
+Even though the robot reached the defined goal, it doesn't solve it very quickly. One reason is that the choosen stepper motors. Even in full-step-mode they don't turn the wheel faster than about 3/5 cm per second.
 
 Usage
 -----
 
-To install and use our implementation you need to install some necessary libraries for the raspbian operating system. All of them are prebuild and can be installed with the package control as following: 
+To install and use our implementation you need to install some necessary libraries for the raspbian operating system. All of them are prebuild and can be installed with the package control as following:
 
 ```
-sudo apt-get install libopencv-dev python-opencv 
+sudo apt-get install libopencv-dev python-opencv
 sudo apt-get install python-setuptools
 easy_install --user picamera
 ```
@@ -190,6 +201,6 @@ Conclusion
 
 Our main problem for this hardware and software decision is performance as we reached a feedback loop time of round about 5 seconds. This is quite a long time and is caused by the calculation speed of the Raspberry Pi during the image processing. Of cause, speed wasn't the main goal for this project, thus we could actually tweak and change our implementation to gain some performance improvements. But still, there would be a big delay during the image processing.
 
-To solve this issue we thought about outsourcing of the computationally intensive image processing. One way to do this is the ROS - Robot Operating System which will be shortly introduces in the following chapter. 
+To solve this issue we thought about outsourcing of the computationally intensive image processing. One way to do this is the ROS - Robot Operating System which will be shortly introduces in the following chapter.
 
 ## ROS
